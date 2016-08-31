@@ -53,7 +53,7 @@ class LinkedList(AbstractLinkedList):
 
 
     def __getitem__(self, index):
-        if len(self) - 1 < index and index != None:
+        if len(self) - 1 < int(index):
             raise IndexError
         
         position = self.start
@@ -124,10 +124,11 @@ class LinkedList(AbstractLinkedList):
     def pop(self, index=None):
         if self.start is None:                      #Raise exceptions if the linked is empty or if the index specified is larger than the length of the linked list
             raise IndexError
-        if len(self) - 1 < index and index != None:
-            raise IndexError
-            
+        
         if index is not None:                                  
+            if len(self) - 1 < index:
+                raise IndexError
+            
             previous_node = None                    #Setting the position to the first node and creating a counter
             position = self.start
             counter = 0
